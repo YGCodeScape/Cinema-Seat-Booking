@@ -1,8 +1,12 @@
 import React from 'react'
+import CinemaSeatBooking from './Components/Cinema-Seat-Booking'
+
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>App
+      <CinemaSeatBooking />
+    </div>
   )
 }
 
