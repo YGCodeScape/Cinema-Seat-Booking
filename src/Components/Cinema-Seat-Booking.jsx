@@ -19,8 +19,11 @@ const CinemaSeatBooking = ( {
 
 }) => {
   return (
-    <div>Cinema-Seat-Booking
+    <div className="container-div">Cinema-Seat-Booking hello
         {/* title */}
+      <div className="title-d">
+          
+      </div>
         {/* screen */}
         {/* seats map */}
         {/* legend */}

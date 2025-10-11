@@ -1,9 +1,10 @@
 import React from 'react'
+import './App.css';
 import CinemaSeatBooking from './Components/Cinema-Seat-Booking'
-
 
 const App = () => {
   return (
+    <div>
       <CinemaSeatBooking 
            layout = {{
              rows : 8,
@@ -16,6 +17,7 @@ const App = () => {
              vip : {name: "VIP", Price: 350, rows: [6,7,8] },
            }}
       />
+    </div>
   );
 }
 
