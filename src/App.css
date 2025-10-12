@@ -7,10 +7,59 @@ html,
 body {
   width: 100%;
   height: 100%;
+  font-family: "Outfit", sans-serif;
 }
 .container-div {
   width: 100%;
   min-height: 100%;
-  background-color: rgb(255, 105, 105);
-  padding: 1rem;
+  background-color: rgb(252, 248, 248);
+  padding: 0.9rem;
+}
+.title-d {
+  max-width: 1152px;
+  margin: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 2rem;
+}
+.title-d h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgb(2, 2, 32);
+  font-family: "Sansation", sans-serif;
+  text-transform: uppercase;
+} 
+.title-d p {
+font-family: "Outfit", sans-serif;
+font-size: 1.1rem;
+text-transform: capitalize;
+color: rgba(67, 67, 82, 0.719);
+}
+
+.screen-d {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+.screen {
+  width: 75%;
+  height: 14px;
+  border-radius: 50px;
+  background: linear-gradient(90deg,rgba(209, 235, 255, 1) 0%, rgba(122, 235, 255, 1) 50%, rgba(209, 235, 255, 1) 100%);
+  box-shadow:inset 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+.screen-d span {
+  font-size: 1rem;
+  color: rgba(67, 67, 82, 0.719);
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }

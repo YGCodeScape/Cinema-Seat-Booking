@@ -14,17 +14,23 @@ const CinemaSeatBooking = ( {
     bookedSeat = [],
     currency = "₹",
     onBookingComplete = () => {},
-    title = "YXCinemas",
+    title = "YX-Cinemas",
     subtitle = "we are the best in cinemas.",
 
 }) => {
   return (
-    <div className="container-div">Cinema-Seat-Booking hello
+    <div className="container-div">
         {/* title */}
-      <div className="title-d">
-          
-      </div>
+       <div className="title-d">
+           <h1>{title}</h1>
+           <p>{subtitle}</p>
+        </div>
+        
         {/* screen */}
+        <div className="screen-d">
+           <div className="screen"></div>
+           <span>screen</span>
+        </div>
         {/* seats map */}
         {/* legend */}
         {/* summery */}
