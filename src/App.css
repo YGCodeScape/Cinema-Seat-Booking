@@ -49,6 +49,7 @@ color: rgba(67, 67, 82, 0.719);
   align-items: center;
   justify-content: center;
   gap: 0.3rem;
+  margin-bottom: 3rem;
 }
 .screen {
   width: 75%;
@@ -62,4 +63,15 @@ color: rgba(67, 67, 82, 0.719);
   color: rgba(67, 67, 82, 0.719);
   text-transform: uppercase;
   letter-spacing: 3px;
+}
+.seats-map-d {
+  margin-bottom: 2.4rem;
+  overflow-x: auto;
+}
+.seats-rows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: max-content;
+
 }

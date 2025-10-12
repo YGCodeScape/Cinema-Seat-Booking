@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 
 const CinemaSeatBooking = ( {
     layout = {
@@ -18,6 +18,16 @@ const CinemaSeatBooking = ( {
     subtitle = "we are the best in cinemas.",
 
 }) => {
+ // this function will only run when something change in this dependency [] array
+  const initializeSeats = useMemo(() => {
+     const seats = [];
+     for (let row = 0; row < layout.rows; row++) {
+           const seatRow = [];
+     }
+  }, [layout, seatTypes, bookedSeat]);
+
+  const [seats, setSeats] = useState(initializeSeats);
+
   return (
     <div className="container-div">
         {/* title */}
@@ -25,13 +35,21 @@ const CinemaSeatBooking = ( {
            <h1>{title}</h1>
            <p>{subtitle}</p>
         </div>
-        
+
         {/* screen */}
         <div className="screen-d">
            <div className="screen"></div>
            <span>screen</span>
         </div>
+
         {/* seats map */}
+        <div className="seats-map-d">
+           <div className="seats-rows">
+               {
+                  
+               }
+           </div>
+        </div>
         {/* legend */}
         {/* summery */}
         {/* booking btn */}
