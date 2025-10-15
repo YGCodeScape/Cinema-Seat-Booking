@@ -103,3 +103,6 @@ color: rgba(67, 67, 82, 0.719);
 .legend-child {
   margin-right: 8px;
 }
+.selected-seat, .Booked-seat {
+  margin-right: 8px;
+}

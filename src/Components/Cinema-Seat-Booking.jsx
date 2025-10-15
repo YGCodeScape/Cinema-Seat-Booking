@@ -91,13 +91,37 @@ const CinemaSeatBooking = ( {
      if(seat.status === "booked") {
       return `${baseClass} bg-gray-400 border-gray-500 text-gray-600 cursor-not-allowed `;
      }
-     if(seat.selected) {
+     else if(seat.selected) {
       return `${baseClass} bg-green-500 border-green-600 text-white transform scale-110 `;
      }
      return `${baseClass} ${getColorClass(seat.color)} `;
   };
 
-  const handleSeatClick = (rowIndex, seatIndex) => {};
+  const handleSeatClick = (rowIndex, seatIndex) => {
+    const seat = seats[rowIndex][seatIndex];
+    if(seat.status === "booked") return;
+
+    const isCurrentlySelected = seat.selected;
+    setSeats((prevSeats) => {
+      return prevSeats.map((row, rIdx) => 
+        row.map((s, sIdx) => {
+          if (rIdx === rowIndex && s.seat === seatIndex) {
+            return { ...s, selected: !s.selected};
+          }
+          return s;
+        })
+      );
+    });
+
+    if (isCurrentlySelected) {
+       setSelectedSeats((prev) => prev.filter((s) => s.id !== seat.id));
+       console.log("selected");
+    }else {
+       setSelectedSeats((prev) => [...prev, seat]);
+       console.log("discard");
+    }
+
+  };
 
   const renderSeatSection = (seatRow, startIndex, endIndex) => {
     return (
@@ -180,6 +204,15 @@ const CinemaSeatBooking = ( {
              </div>
             );
            })}
+              <div className="flex items-center">
+                 <div className="selected-seat w-6 h-6 bg-green-500 border-2 border-green-600 rounded-t-lg"></div>
+                 <span className="text-sm">Selected</span>
+              </div>
+              <div className="flex items-center">
+                  <div className="Booked-seat w-6 h-6 bg-gray-400 border-2 border-gray-600 rounded-t-lg "></div>
+                  <span className="text-sm">Booked</span>
+              </div>
+
         </div>
         {/* summery */}
         {/* booking btn */}
