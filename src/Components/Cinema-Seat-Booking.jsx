@@ -30,6 +30,7 @@ const CinemaSeatBooking = ( {
 
   const getSeatType = (row) => {
      const seatTypeEntries = Object.entries(seatTypes);
+
      for(let i = 0; i < seatTypeEntries.length; i++ ) {
          const [type, config] = seatTypeEntries[i];
          if(config.rows.includes(row)) {
@@ -68,12 +69,15 @@ const CinemaSeatBooking = ( {
   }, [layout, seatTypes, bookedSeats]);
 
   const [seats, setSeats] = useState(initializeSeats);
+  const [selectedSeats, setSelectedSeats] = useState([]);
 
   const getSeatClassName = (seat) => {
      return "w-8 h-8 sm:w-10 sm:h-10 rounded-t-lg border-2 border-blue-300 cursor-pointer transition-all duration-200 flex items-center justify-center text-xs sm:text-sm font-bold bg-blue-100 text-blue-800";
-     
-  }
 
+     
+  };
+
+  const handleSeatClick = (rowIndex, seatIndex) => {};
 
   const renderSeatSection = (seatRow, startIndex, endIndex) => {
     return (
@@ -84,7 +88,7 @@ const CinemaSeatBooking = ( {
                         className={getSeatClassName(seat)}
                         key={seat.id} title={`${seat.id} - ${
                           getSeatType(seat.row)?.name || "Regular"
-                        } - ${currency}${seat.Price} `}
+                        } - ${currency}${seat.price} `}
                         onClick={() => handleSeatClick(seat.row, startIndex + index)}
                      >
                  {startIndex + index + 1}
@@ -119,7 +123,7 @@ const CinemaSeatBooking = ( {
                           <span>{String.fromCharCode(65 + rowIndex)}</span>
                           {renderSeatSection(row, 0, layout.aislePosition)}
                           {/* aisle */}
-                          <div className="entry-gap"></div>
+                          <div className="w-8"></div>
                           {renderSeatSection(
                             row, 
                             layout.aislePosition,
