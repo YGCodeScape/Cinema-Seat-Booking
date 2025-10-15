@@ -71,10 +71,30 @@ const CinemaSeatBooking = ( {
   const [seats, setSeats] = useState(initializeSeats);
   const [selectedSeats, setSelectedSeats] = useState([]);
 
-  const getSeatClassName = (seat) => {
-     return "w-8 h-8 sm:w-10 sm:h-10 rounded-t-lg border-2 border-blue-300 cursor-pointer transition-all duration-200 flex items-center justify-center text-xs sm:text-sm font-bold bg-blue-100 text-blue-800";
+  const getColorClass = (colorName) => {
+    const colorMap = {
+       blue: "bg-blue-100 border-blue-300 text-blue-800 hover:bg-blue-200",
+       purple: "bg-purple-100 border-purple-300 text-purple-800 hover:bg-purple-200 ",
+       yellow: "bg-yellow-100 border-yellow-300 text-yellow-800 hover:bg-yellow-200 ",
+       green: "bg-green-100 border-green-300 text-green-800 hover:bg-green-200 ",
+       red: "bg-red-100 border-red-300 text-red-800 hover:bg-red-200 ",
+       indigo: "bg-indigo-100 border-indigo-300 text-indigo-800 hover:bg-indigo-200",
+       pink: "bg-pink-100 border-pink-300 text-pink-800 hover:bg-pink-200 ",
+       gray: "bg-gray-100 border-gray-300 text-gray-800 hover:bg-gray-200 ",
+    };
+    return colorMap[colorName] || colorMap.blue;
+  }
 
-     
+  const getSeatClassName = (seat) => {
+     const baseClass = "w-8 h-8 sm:w-10 sm:h-10 rounded-t-lg border-2 border-blue-300 cursor-pointer transition-all duration-200 flex items-center justify-center text-xs sm:text-sm font-bold bg-blue-100 text-blue-800";
+
+     if(seat.status === "booked") {
+      return `${baseClass} bg-gray-400 border-gray-500 text-gray-600 cursor-not-allowed `;
+     }
+     if(seat.selected) {
+      return `${baseClass} bg-green-500 border-green-600 text-white transform scale-110 `;
+     }
+     return `${baseClass} ${getColorClass(seat.color)} `;
   };
 
   const handleSeatClick = (rowIndex, seatIndex) => {};
@@ -136,6 +156,7 @@ const CinemaSeatBooking = ( {
            </div>
         </div>
         {/* legend */}
+
         {/* summery */}
         {/* booking btn */}
     </div>
