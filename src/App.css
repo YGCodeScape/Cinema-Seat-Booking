@@ -118,3 +118,7 @@ color: rgba(67, 67, 82, 0.719);
 .selected-seat-show {
   margin-bottom: 8px;
 }
+.book-btn{
+  padding: 24px 32px;
+  margin-left: 120px;
+}
