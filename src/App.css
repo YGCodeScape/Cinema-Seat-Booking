@@ -92,3 +92,14 @@ color: rgba(67, 67, 82, 0.719);
 #seatbox {
   margin: 6px;
 }
+
+.legend-d {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 24px;
+  padding: 4px;
+}
+.legend-child {
+  margin-right: 8px;
+}

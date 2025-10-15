@@ -57,9 +57,9 @@ const CinemaSeatBooking = ( {
                   row,
                   seat,
                   type: seatTypeInfo?.type || "regular",
-                  price: seatTypeInfo?.price || 150,
+                  price: seatTypeInfo?.Price || 150,
                   color: seatTypeInfo?.color || "blue",
-                  status: bookedSeats.includes(seatId) ? "booked" : "available",
+                  status: bookedSeats.includes(seatId)? "booked" : "available",
                   selected: false,
                  });
            }
@@ -116,8 +116,16 @@ const CinemaSeatBooking = ( {
             })}
         </div>
     ); 
-    
   };
+
+  const uniqueSeatTypes = Object.entries(seatTypes).map(
+    ([type, config], index) => {
+      return {
+        type,
+        color: colors[index % colors.length],
+        ...config,
+      };
+  });
 
   return (
     <div className="container-div">
@@ -156,7 +164,23 @@ const CinemaSeatBooking = ( {
            </div>
         </div>
         {/* legend */}
+        <div className="legend-d gap-6 bg-gray-50 rounded-lg">
+           {uniqueSeatTypes.map((seatTypes) => {
+            return (
+             <div key={seatTypes.type} className="flex items-center">
+                <div className={`legend-child w-6 h-6 border-2 rounded-t-lg
+                   ${getColorClass(seatTypes.color) || "bg-blue-100 border-blue-300"
 
+                   }`}
+                   ></div>
+                   <span className="text-sm">
+                     {seatTypes.name} ({currency}
+                     {seatTypes.Price})
+                   </span>
+             </div>
+            );
+           })}
+        </div>
         {/* summery */}
         {/* booking btn */}
     </div>
