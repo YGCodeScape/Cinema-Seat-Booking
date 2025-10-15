@@ -155,8 +155,21 @@ const CinemaSeatBooking = ( {
     return selectedSeats.reduce((total, seat) => total + seat.price, 0);
   }
   const handleBooking = () => {
-    
-  }
+    if (selectedSeats.length === 0) {
+      alert("Please select at least one seat");
+      return;
+    }
+    setSeats((prevSeats) => {
+      return prevSeats.map((row) => 
+      row.map((seat) => {
+        if (selectedSeats.some((selected) => selected.id === seat.id)) {
+           return {...seat, status: "booked", selected: false};
+        }
+        return seat;
+      })
+    );
+    });
+  };
 
   return (
     <div className="container-div">
