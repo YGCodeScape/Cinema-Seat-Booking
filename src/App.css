@@ -106,3 +106,15 @@ color: rgba(67, 67, 82, 0.719);
 .selected-seat, .Booked-seat {
   margin-right: 8px;
 }
+
+.booking-d {
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.booking-d h3 {
+  margin-bottom: 8px;
+
+}
+.selected-seat-show {
+  margin-bottom: 8px;
+}

@@ -151,6 +151,10 @@ const CinemaSeatBooking = ( {
       };
   });
 
+  const getTotalPrice = () => {
+    return selectedSeats.reduce((total, seat) => total + seat.price, 0);
+  }
+
   return (
     <div className="container-div">
         {/* title */}
@@ -214,7 +218,33 @@ const CinemaSeatBooking = ( {
               </div>
 
         </div>
-        {/* summery */}
+        {/*booking  summery */}
+          <div className="booking-d bg-gray-50 rounded-lg">
+             <h3 className="font-bold text-lg"> Booking Summary</h3>
+
+             {selectedSeats.length>0?(
+              <div className="">
+                <p className="selected-seat-show">
+                  Selected Seats:{" "}
+                  <span className="font-medium">
+                    {selectedSeats.map((s) => s.id).join(", ")}
+                  </span>
+                </p>
+                <p className="mb-6">
+                   Number of Seats: {" "}
+                   <span className='font-medium'>
+                     {selectedSeats.length}
+                   </span>
+                </p>
+                <p className='text-xl font-bold text-green-600'>
+                  Total : {currency}
+                  {getTotalPrice()}
+                </p>
+              </div>
+             ):(
+               <p className="text-gray-500">No Seats are selected</p>
+             )}
+          </div>
         {/* booking btn */}
     </div>
   )
