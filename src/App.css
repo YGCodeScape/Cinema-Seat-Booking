@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 * {
   margin: 0;
   padding: 0;
@@ -87,24 +89,10 @@ color: rgba(67, 67, 82, 0.719);
   margin-right: 1rem;
 
 }
-.render-seat-d {
-  display: flex;
+#seatbox {
+  margin: 6px;
 }
-.default-seat {
-  width: 2rem;
-  height: 2.2rem;
-  margin: 3px 10px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  cursor: pointer;
-   transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    color: #0077b6;
-    background-color: #ade8f4;
-    border: 2px solid #90e0ef;
+
+.entry-gap {
+  width: 32px;
 }

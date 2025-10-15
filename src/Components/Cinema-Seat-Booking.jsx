@@ -19,8 +19,26 @@ const CinemaSeatBooking = ( {
 
 }) => {
 
-  const getSeatType = () => {
+  const colors = [
+    "red",
+    "purple",
+    "yellow",
+    "blue",
+    "gray",
+    "pink",
+  ];
 
+  const getSeatType = (row) => {
+     const seatTypeEntries = Object.entries(seatTypes);
+     for(let i = 0; i < seatTypeEntries.length; i++ ) {
+         const [type, config] = seatTypeEntries[i];
+         if(config.rows.includes(row)) {
+             const color  = colors[i % colors.length];
+             return {type, color, ...config }
+         }
+     }
+     const [firstType, firstConfig] = seatTypeEntries[0];
+     return {type: firstType, color: colors[0], ...firstConfig };
   }
 
  // this function will only run when something change in this dependency [] array
@@ -47,21 +65,30 @@ const CinemaSeatBooking = ( {
            seats.push(seatRow);
      }
      return seats;
-
   }, [layout, seatTypes, bookedSeats]);
 
   const [seats, setSeats] = useState(initializeSeats);
 
+  const getSeatClassName = (seat) => {
+     return "w-8 h-8 sm:w-10 sm:h-10 rounded-t-lg border-2 border-blue-300 cursor-pointer transition-all duration-200 flex items-center justify-center text-xs sm:text-sm font-bold bg-blue-100 text-blue-800";
+     
+  }
+
 
   const renderSeatSection = (seatRow, startIndex, endIndex) => {
     return (
-        <div className="render-seat-d">
+        <div className="flex">
             {seatRow.slice(startIndex, endIndex).map((seat, index) => {
-               return( 
-                <div className="default-seat"> 
-                    {startIndex + index + 1}
-                </div>
-               );
+
+               return <div id='seatbox'
+                        className={getSeatClassName(seat)}
+                        key={seat.id} title={`${seat.id} - ${
+                          getSeatType(seat.row)?.name || "Regular"
+                        } - ${currency}${seat.Price} `}
+                        onClick={() => handleSeatClick(seat.row, startIndex + index)}
+                     >
+                 {startIndex + index + 1}
+               </div>;
             })}
         </div>
     ); 
@@ -90,8 +117,9 @@ const CinemaSeatBooking = ( {
                      return (
                        <div className="seats-rows" key={rowIndex}>
                           <span>{String.fromCharCode(65 + rowIndex)}</span>
-                          {renderSeatSection(row, 0, layout.aislePosition )}
+                          {renderSeatSection(row, 0, layout.aislePosition)}
                           {/* aisle */}
+                          <div className="entry-gap"></div>
                           {renderSeatSection(
                             row, 
                             layout.aislePosition,
