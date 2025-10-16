@@ -9,7 +9,7 @@ const CinemaSeatBooking = ( {
     seatTypes = {
         regular: {name: "Regular", Price: 150, rows: [0,1,2] },
         premium: {name: "Premium", Price: 250, rows: [3,4,5] },
-        vip : {name: "VIP", Price: 350, rows: [6,7,8] },
+        vip : {name: "VIP", Price: 350, rows: [6,7] },
     },
     bookedSeats = [],
     currency = "₹",
@@ -50,7 +50,7 @@ const CinemaSeatBooking = ( {
            const seatTypeInfo = getSeatType(row);
 
            for(let seat = 0; seat < layout.seatsPerRow; seat++) {
-                 const seatId = `${String.fromCharCode(65 + row)} ${seat + 1}`;
+                 const seatId = `${String.fromCharCode(65 + row)}${seat + 1}`;
 
                  seatRow.push({
                   id: seatId,
