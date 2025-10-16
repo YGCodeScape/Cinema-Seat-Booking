@@ -16,7 +16,7 @@ const App = () => {
              premium: {name: "Premium", Price: 250, rows: [3,4,5] },
              vip : {name: "VIP", Price: 350, rows: [6,7,8] },
            }}
-           bookedSeats={[]}
+           bookedSeats={["C4", "C5", "C6"]}
       />
     </div>
   );
